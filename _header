@@ -1,0 +1,7 @@
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  x-content-type-options: nosniff
+  referrer-policy: no-referrer
+  content-security-policy: frame-ancestors none;
+  permissions-policy: accelerometer=(self "https://www.youtube-nocookie.com" "https://www.youtube.com"), ambient-light-sensor=(), autoplay=(self "https://www.youtube-nocookie.com" "https://www.youtube.com"), camera=(), clipboard-write=(self "https://www.youtube-nocookie.com" "https://www.youtube.com"), encrypted-media=(self "https://www.youtube-nocookie.com" "https://www.youtube.com" "https://*.spotify.com"), fullscreen=(), geolocation=(), gyroscope=(self "https://www.youtube-nocookie.com" "https://www.youtube.com"), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(self "https://www.youtube-nocookie.com" "https://www.youtube.com"), speaker=(), usb=(), vibrate=(), vr=()

@@ -7,7 +7,122 @@
     <title>Vite App</title>
   </head>
   <body>
-    <h1>Security</h1>
+    <h1>Security</h1>    
+    <h1>HTTP Headers</h1>
+    <div>
+      <h2> X-Frame-Options</h2>
+      <p> The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be allowed to render a page in a frame, iframe, embed or object. Sites can use this to avoid click-jacking attacks, by ensuring that their content is not embedded into other sites. There are two possible directives for X-Frame-Options:</p>
+      <li>X-Frame-Options: DENY</li>
+      <li>X-Frame-Options: SAMEORIGIN</li>
+      <p>If you specify DENY, not only will attempts to load the page in a frame fail when loaded from other sites, attempts to do so will fail when loaded from the same site. On the other hand, if you specify SAMEORIGIN, you can still use the page in a frame as long as the site including it in a frame is the same as the one serving the page.</p>
+      <h3>I included X-Frame-Options: DENY in this site which means the page cannot be displayed in a frame, regardless of the site attempting to do so.</h3>
+      
+    </div>
+    <div>
+      <h2>X-XSS-Protection</h2>
+      <p> The HTTP X-XSS-Protection response header is a feature of Internet Explorer, Chrome and Safari that stops pages from loading when they detect reflected cross-site scripting (XSS) attacks. Although these protections are largely unnecessary in modern browsers when sites implement a strong Content-Security-Policy that disables the use of inline JavaScript ('unsafe-inline'), they can still provide protections for users of older web browsers that don't yet support CSP.</p>
+      <li>X-XSS-Protection: 0</li>
+      <li>X-XSS-Protection: 1</li>
+      <li>X-XSS-Protection: 1; mode=block</li>
+      <li>X-XSS-Protection: 1; report=reporting-uri</li>
+      <h3>I included X-XSS-Protection: 1; mode=block enables XSS filtering. Rather than sanitizing the page, the browser will prevent rendering of the page if an attack is detected.</h3>
+      
+    </div>
+    <div>
+      <h2>x-content-type-options</h2>
+      <p>The X-Content-Type-Options response HTTP header is a marker used by the server to indicate that the MIME types advertised in the Content-Type headers should not be changed and be followed. This is a way to opt out of MIME type sniffing, or, in other words, to say that the MIME types are deliberately configured.</p>
+      <li>X-Content-Type-Options: nosniff</li>
+      <h3>This site included X-Content-Type-Options: nosniff which Blocks a request if the request destination is of type style and the MIME type is not text/css, or of type script and the MIME type is not a JavaScript MIME type.</h3>
+     
+    </div>
+    <div>
+      <h2>referrer-policy</h2>
+      <p>The Referrer-Policy HTTP header controls how much referrer information (sent via the Referer header) should be included with requests. Aside from the HTTP header, you can set this policy in HTML.</p>
+      <li>Referrer-Policy: no-referrer</li>
+      <li>Referrer-Policy: no-referrer-when-downgrade</li>
+      <li>Referrer-Policy: origin</li>
+      <li>Referrer-Policy: origin-when-cross-origin</li>
+      <li>Referrer-Policy: same-origin</li>
+      <li>Referrer-Policy: strict-origin</li>
+      <li>Referrer-Policy: strict-origin-when-cross-origin</li>
+      <li>Referrer-Policy: unsafe-url</li>   
+     
+      <h3>I used referrer-policy: no-referrer which specifies that no referrer information is to be sent along with requests made from a particular request client to any origin. The header will be omitted entirely.</h3>
+    </div>
+    <div>
+      <h2>content-security-policy</h2>
+      <p>The HTTP Content-Security-Policy (CSP) frame-ancestors directive specifies valid parents that may embed a page using frame, iframe, object, embed, or applet.
+
+        Setting this directive to 'none' is similar to X-Frame-Options: deny (which is also supported in older browsers).</p>
+      <li>content-security-policy: frame-ancestors none;</li>
+      <li>Content-Security-Policy: frame-ancestors 'self' https://www.example.org;</li>     
+      <h3>This site has content-security-policy: frame-ancestors none;</h3>
+    </div>
+    <div>
+      <h2>permissions-policy</h2>
+      <p>Permissions Policy (formerly known as feature policy) allows web developers to selectively enable, disable, and modify the behavior of certain APIs and web features in the browser. It's like CSP but instead of controlling security, it controls third-party access to features such as camera, microphone and geolocation - and enhances the user experience.</p>
+      <h3>This site has</h3>
+      <p>permissions-policy: accelerometer=(self "https://www.youtube-nocookie.com" "https://www.youtube.com"), ambient-light-sensor=(), autoplay=(self "https://www.youtube-nocookie.com" "https://www.youtube.com"), camera=(), clipboard-write=(self "https://www.youtube-nocookie.com" "https://www.youtube.com"), encrypted-media=(self "https://www.youtube-nocookie.com" "https://www.youtube.com" "https://*.spotify.com"), fullscreen=(), geolocation=(), gyroscope=(self "https://www.youtube-nocookie.com" "https://www.youtube.com"), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(self "https://www.youtube-nocookie.com" "https://www.youtube.com"), speaker=(), usb=(), vibrate=(), vr=()
+      </p>
+    </div>
+    <div>
+      <h2>Security Principles</h2>
+      <div>
+        <h3>Confidentiality</h3>
+        <p>The CIA/ AIC triad i.e. Confidentiality, Integrity and Availability are a model specifically designed for guidance to an organization’s information security.
+
+          Confidentiality means unauthorized party/ individual cannot gain access to an organization’s sensitive data. If at all someone manages to gain access through unintentional behaviour then such a failure of confidentiality is called a breach.
+          
+          For example, what if, your bank records are revealed on a public website that would be a breach.
+          
+          In short, if anybody gains access to data/ information he/ she shouldn’t have an access to, then that is the confidentiality breach.</p>
+      </div>
+      <diV>
+        <h3>Integrity</h3>
+        <p>Integrity is to ensure that information is not altered or to ensure that the authenticity of the data is maintained.
+
+          For example, if u own an e-commerce website and someone try to change the prices of the products and you are unable to alter the data then that is the failure of integrity of information.
+          
+          Another example of failure would be if you try to connect to a website and the attacker redirects your traffic to a different website which is not genuine.</p>
+      </diV>
+      <div>
+        <h3>Availability</h3>
+        <p>This means information is accessed by an authorized user when needed. The information is valuable if only it can be accessible at the right time. Denial of service is a very common attack these days. Main purpose of DOS is to deny users the access to the resources or information they are authorized to access. Such downtimes turn out to be very costly. You can ensure availability by keeping a backup which could save information in situations such as natural disasters or damage to system/ hardware.</p>
+      </div>
+      <div>
+        <h3>Authentication</h3>
+        <p>This is the first process which provides a way to identify the user by having the user enter its valid user name and password.
+
+          In other words it is a process which determines if someone is in fact, who he/she declares to be. If the credentials match the user is granted access and if credential varies then authentication fails and access is denied.
+          
+          Here the credentials are compared to the files in the database of authorized users within the server. When the process is complete, the user is authorized to see or access and have rights to access the information.</p>
+      </div>
+      <div>
+        <h3>Authorization</h3>
+        <p>Authentication precedes authorization.
+
+          After getting access to a system, the user might try to issue commands. The authorization determines if a user has the authority to issue the commands.
+          
+          It is a process of giving permission to do something or have some information access.</p>
+      </div>
+      <div>
+        <h3>Accountability</h3>
+        <p>This ensures that the actions of an entity can be traced and all its operations can be identified.
+
+          On the other hand accountability is that the employee is responsible for completing the task and will have to explain why if at all they fail to do so.
+          
+          The two pillars of good corporate governance are accountability and transparency.</p>
+      </div>
+      <div>
+        <h3>Non repudiation</h3>
+        <p>It is the ability to prove that a particular operation cannot be repudiated later. It is the assurance that anyone cannot deny something later
+
+          For example, with the help of emails one gets a guarantee of the sender and the recipient, digital signatures or email messages.
+          
+          One cannot deny the signature of the document between two parties via digital signature or encryption.</p>
+      </div>
+    </div>
+    
     <script type="module" src="/main.js"></script>
   </body>
 </html>

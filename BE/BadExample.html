@@ -4,10 +4,31 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/BE/BE.js"></script>
     <title>Vite App</title>
   </head>
   <body>
     <h1>Bad Example</h1>
-    <script type="module" src="/main.js"></script>
+    <div>
+      <h2>Issues</h2>
+      <p>Here you can see GET method is used to send login data which is quite risky because anyone can get user's private data from
+         URL which is not secure. Insted of GET always use POST method to send important data to the server.
+      </p>
+      <p>Other issue is after submission of form, email and password is displayed in alert without encryption which is unsecure because any one can get user's sensitive information and change the data by checking header from networktab of dev tool.To avoid that situation we can use various data encryption methods to encrypt sensitive information.</p>
+    </div>
+    <div>
+      <form id="login" name="login" method="GET" >
+        <h2>Login Page</h2>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email">
+        </div>
+        <div>
+          <label for="pswd">Password:</label>
+          <input type="password" id="pswd" name="pswd">
+        </div>
+        <input type="submit" id="sbmt" name="sbmt" value="Log In" />
+      </form>
+    </div>   
   </body>
 </html>

@@ -9,5 +9,8 @@
   "devDependencies": {
     "sass": "^1.37.5",
     "vite": "^2.4.4"
+  },
+  "dependencies": {
+    "jshint": "^2.13.1"
   }
 }
